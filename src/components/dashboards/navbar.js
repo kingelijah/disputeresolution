@@ -5,8 +5,7 @@ import Bell from "./bell.png";
 import User from "./user.svg";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav, Dropdown } from 'react-bootstrap/';
-import { BrowserRouter, Route,Link, Switch}  from 'react-router-dom';
-import Disputes from './disputes';
+import { Link }  from 'react-router-dom';
 
 
 
@@ -18,8 +17,8 @@ function navbar() {
         <Nav className="mr-auto">
           <Nav.Link ><Link to={'/Overview'}  className="navbar-nav"><b>Dashboard</b></Link></Nav.Link>
           <Nav.Link  ><Link to={'/Disputes'} className="navbar-nav"><b>Disputes</b></Link></Nav.Link>
-          <Nav.Link  ><Link to={'/Overview'} className="navbar-nav"><b>Users</b></Link></Nav.Link>
-          <Nav.Link  ><Link to={'/Overview'} className="navbar-nav"><b>Log</b></Link></Nav.Link>
+          <Nav.Link  ><Link to={'/Users'} className="navbar-nav"><b>Users</b></Link></Nav.Link>
+          <Nav.Link  ><Link to={'/Logs'} className="navbar-nav"><b>Log</b></Link></Nav.Link>
         </Nav>
         <Nav>
           <Nav.Link eventKey={2} href="#memes" className="dropdown-basic">

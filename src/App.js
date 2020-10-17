@@ -5,6 +5,10 @@ import './App.css';
 import Login  from './components/authentication/login';
 import Overview  from './components/dashboards/overview';
 import Disputes  from './components/dashboards/disputes';
+import Users  from './components/dashboards/manageuser';
+import AssignDisputes  from './components/dashboards/assigndisputes';
+import Accountsettings  from './components/dashboards/accountsettings';
+import Logs  from './components/dashboards/logs';
 import { BrowserRouter, Route, Switch}  from 'react-router-dom';
 
 function App() {
@@ -16,6 +20,10 @@ function App() {
 <Route exact path="/Overview" component={Overview} />
 <Route exact path="/" component ={Login} />
 <Route exact path="/Disputes" component ={Disputes} />
+<Route exact path="/assigndisputes" component ={AssignDisputes} />
+<Route exact path="/Users" component ={Users} />
+<Route exact path="/Accountsettings" component ={Accountsettings} />
+<Route exact path="/Logs" component ={Logs} />
       </Switch>
     </div>
     </div>
@@ -24,3 +32,5 @@ function App() {
 }
 
 export default App;
+
+

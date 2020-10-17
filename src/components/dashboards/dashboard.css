@@ -32,3 +32,17 @@
   opacity: 50%;
 
 }
+.icon-dot {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  /* display: block;
+  position: absolute; */
+  background: #022E64;
+  /* left: 60px;
+  bottom: 160px */
+  
+}
+.modal-title{
+  color:yellow;
+}
