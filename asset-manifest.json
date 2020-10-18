@@ -1,28 +1,31 @@
 {
   "files": {
-    "main.css": "/disputeresolution/static/css/main.cb6e8dbc.chunk.css",
-    "main.js": "/disputeresolution/static/js/main.b27479c9.chunk.js",
-    "main.js.map": "/disputeresolution/static/js/main.b27479c9.chunk.js.map",
+    "main.css": "/disputeresolution/static/css/main.178341a2.chunk.css",
+    "main.js": "/disputeresolution/static/js/main.7ff89cf3.chunk.js",
+    "main.js.map": "/disputeresolution/static/js/main.7ff89cf3.chunk.js.map",
     "runtime-main.js": "/disputeresolution/static/js/runtime-main.990d137c.js",
     "runtime-main.js.map": "/disputeresolution/static/js/runtime-main.990d137c.js.map",
     "static/css/2.d9ad5f5c.chunk.css": "/disputeresolution/static/css/2.d9ad5f5c.chunk.css",
-    "static/js/2.83ab5ab9.chunk.js": "/disputeresolution/static/js/2.83ab5ab9.chunk.js",
-    "static/js/2.83ab5ab9.chunk.js.map": "/disputeresolution/static/js/2.83ab5ab9.chunk.js.map",
+    "static/js/2.ba6d7eae.chunk.js": "/disputeresolution/static/js/2.ba6d7eae.chunk.js",
+    "static/js/2.ba6d7eae.chunk.js.map": "/disputeresolution/static/js/2.ba6d7eae.chunk.js.map",
     "index.html": "/disputeresolution/index.html",
-    "precache-manifest.987b2fbd5791550d48d8ca8d66ded297.js": "/disputeresolution/precache-manifest.987b2fbd5791550d48d8ca8d66ded297.js",
+    "precache-manifest.3abcc111988e5289ffea498151a220b0.js": "/disputeresolution/precache-manifest.3abcc111988e5289ffea498151a220b0.js",
     "service-worker.js": "/disputeresolution/service-worker.js",
     "static/css/2.d9ad5f5c.chunk.css.map": "/disputeresolution/static/css/2.d9ad5f5c.chunk.css.map",
-    "static/css/main.cb6e8dbc.chunk.css.map": "/disputeresolution/static/css/main.cb6e8dbc.chunk.css.map",
-    "static/js/2.83ab5ab9.chunk.js.LICENSE.txt": "/disputeresolution/static/js/2.83ab5ab9.chunk.js.LICENSE.txt",
+    "static/css/main.178341a2.chunk.css.map": "/disputeresolution/static/css/main.178341a2.chunk.css.map",
+    "static/js/2.ba6d7eae.chunk.js.LICENSE.txt": "/disputeresolution/static/js/2.ba6d7eae.chunk.js.LICENSE.txt",
+    "static/media/accept.svg": "/disputeresolution/static/media/accept.26eff51d.svg",
     "static/media/bin.svg": "/disputeresolution/static/media/bin.be977055.svg",
     "static/media/edit.svg": "/disputeresolution/static/media/edit.feec6a8d.svg",
-    "static/media/user.svg": "/disputeresolution/static/media/user.f407e100.svg"
+    "static/media/logout.svg": "/disputeresolution/static/media/logout.618b417a.svg",
+    "static/media/profile.svg": "/disputeresolution/static/media/profile.69b583cc.svg",
+    "static/media/user.svg": "/disputeresolution/static/media/user.7438f507.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.990d137c.js",
     "static/css/2.d9ad5f5c.chunk.css",
-    "static/js/2.83ab5ab9.chunk.js",
-    "static/css/main.cb6e8dbc.chunk.css",
-    "static/js/main.b27479c9.chunk.js"
+    "static/js/2.ba6d7eae.chunk.js",
+    "static/css/main.178341a2.chunk.css",
+    "static/js/main.7ff89cf3.chunk.js"
   ]
 }
