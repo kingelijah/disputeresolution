@@ -2,19 +2,20 @@ import React from 'react';
 import { Doughnut } from 'react-chartjs-2'
 
 function doughnutchart() {
+    var datas = JSON.parse(localStorage.getItem("un"));
     const data = {
-        labels: ['jan','feb','mar'],
+        labels: ['Asssigned', 'Resolved', 'Unresolved'],
         datasets: [
             {
                 label: 'sales for 2020 (M)',
-                data: [3, 2, 2],
+                data: [datas.TotalAssigned, datas.TotalResolved, datas.TotalAssigned - datas.TotalResolved],
                 backgroundColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(255, 205, 86, 1)',
                     'rgba(54, 162, 235, 1)'
-                    
+
                 ]
-            }         
+            }
         ]
     }
     const options = {
@@ -23,9 +24,9 @@ function doughnutchart() {
         },
         cutoutPercentage: 80
     }
-  return (
-   <Doughnut data={data} options={options}/>
-  );
+    return (
+        <Doughnut data={data} options={options} />
+    );
 }
 
 export default doughnutchart;

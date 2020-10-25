@@ -53,14 +53,14 @@
   margin: 0 0 170px;
 
 }
-/* .errorMessage {
-  color: red;
+.errorMessage {
+  color: #E0AD0F;
   font-size: 0.75em;
   display: relative;
 }
 input.error {
-  border: 1px solid red;
-} */
+  border: 1px solid #E0AD0F;
+}
 
 .form .message a {
   color: #04446c;

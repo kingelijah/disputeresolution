@@ -2,8 +2,9 @@
 import React, { Component } from "react";
 import "./login.css";
 import Logo from "./Logo.png";
-import { Link}  from 'react-router-dom';
+import { Link,Redirect}  from 'react-router-dom';
 import Overview  from '../dashboards/overview';
+import Axios from "axios";
 
 
 const emailRegex = RegExp(
@@ -33,12 +34,11 @@ class login extends Component {
     super(props);
 
     this.state = {
-      firstName: null,
-      lastName: null,
-      email: null,
+      username: null,
       password: null,
       formErrors: {
-        email: "",
+        username: "",
+        authorize: "",
         password: ""
       }
     };
@@ -51,39 +51,81 @@ class login extends Component {
   }
   handleSubmit = e => {
     e.preventDefault();
-
+    let formError = { ...this.state.formErrors };
     if (formValid(this.state)) {
       console.log(`
         --SUBMITTING--
-        Email: ${this.state.email}
+        Username: ${this.state.username}
         Password: ${this.state.password}
       `);
+
     } else {
       console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
     }
+     const userName = this.state.username;
+     const Password = this.state.password;
+    
+    const token = Buffer.from(`${userName}:${Password}`, 'utf8').toString('base64')
+    var data = {
+      ipaddress:"192.168.32.1"
+    };
+    console.log(token);
+    
+    Axios.post('https://fbn.vasudamall.com/Account/Login', data, {
+      headers: {
+        'Authorization': `Basic ${token}`
+      },
+    })
+    .then( res=>{ 
+          console.log( res.data)
+          this.setState({
+            user: res.data.token
+          });
+          // localStorage.setItem('token',res.data.token)
+          var un = JSON.stringify(res.data);      
+          localStorage.setItem('un',un);
+          console.log('test', res.data.Token)
+          if (res.data.Role === "Recon"){
+            this.props.history.push('/Reconpage');
+
+          }
+          else if(res.data.Role === "Agent"){
+            this.props.history.push('/Agent');
+
+          }
+          else{
+            this.props.history.push('/Overview');
+
+          }
+        
+    
+        })
+        .catch((error) => {
+          this.state.formErrors.authorize  = "User Not Profiled Kindly Contact Admin";
+          this.setState({formError});
+          console.error(error)})
+      };
+  
+
+  handleChange = e => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    let formErrors = { ...this.state.formErrors };
+
+    switch (name) {
+      case "username":
+        formErrors.username = value.length < 3 ? "minimum 3 characters required" : "";
+  
+        break;
+      case "password":
+        formErrors.password = value.length < 3 ? "minimum 3 characters required" : "";
+        break;
+      default:
+        break;
+    }
+
+    this.setState({ formErrors, [name]: value }, () => console.log(this.state));
   };
-
-  // handleChange = e => {
-  //   e.preventDefault();
-  //   const { name, value } = e.target;
-  //   let formErrors = { ...this.state.formErrors };
-
-  //   switch (name) {
-  //     case "email":
-  //       formErrors.email = emailRegex.test(value)
-  //         ? ""
-  //         : "invalid email address";
-  //       break;
-  //     case "password":
-  //       formErrors.password =
-  //         value.length < 6 ? "minimum 6 characaters required" : "";
-  //       break;
-  //     default:
-  //       break;
-  //   }
-
-  //   this.setState({ formErrors, [name]: value }, () => console.log(this.state));
-  // };
 
   render() {
     const { formErrors } = this.state;
@@ -96,17 +138,19 @@ class login extends Component {
             </div>
           <form onSubmit={this.handleSubmit} noValidate className="login-form">
             
-            <div className="email">
+            <div className="username">
               <input
-                className={formErrors.email.length > 0 ? "error" : null}
+                className={formErrors.username.length > 0 ? "error" : null}
                 placeholder="Username"
-                type="email"
-                name="email"
+                type="text"
+                name="username"
                 noValidate
                 onChange={this.handleChange}
               />
-              {formErrors.email.length > 0 && (
-                <span className="errorMessage">{formErrors.email}</span>
+              </div>
+              <div>
+              {formErrors.username.length > 0 && (
+                <span className="errorMessage">{formErrors.username}</span>
               )}
             </div>
             <div className="password">
@@ -118,13 +162,21 @@ class login extends Component {
                 noValidate
                 onChange={this.handleChange}
               />
+              </div>
+              <div>
               {formErrors.password.length > 0 && (
                 <span className="errorMessage">{formErrors.password}</span>
               )}
             </div>
             <div className="createAccount">
-            <Link to={'/Overview'}><button type="submit">Login</button></Link>
+            <button type="submit">Login</button>
+            <div>
+              {formErrors.authorize.length > 0 && (
+                <span className="errorMessage">{formErrors.authorize}</span>
+              )}
+            </div>
               <p className="message">Forgot Password?</p>
+            
             </div>
           </form>
         </div>

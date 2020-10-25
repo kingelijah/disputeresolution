@@ -9,87 +9,35 @@ import { } from 'react-bootstrap/';
 import Axios from 'axios';
 
 
-function Manageuser() {
+function Process() {
 
   const [lgShow, setLgShow] = useState(false);
-  const [users, setUsers] = useState([]);
+  const [Teams, setTeams] = useState([]);
   var datas = JSON.parse(localStorage.getItem("un"));
 
   useEffect(() => {
-    Axios.get('https://fbn.vasudamall.com/Admin/GetAllUsers', {
+    Axios.get('https://fbn.vasudamall.com/Admin/GetAllProcesses', {
       headers: {
         'Authorization': `token ${datas.Token}`
       }
     })
     .then((res) => {
       console.log(res.data)
-       setUsers(res.data);
+       setTeams(res.data);
     })
     .catch((error) => {
       console.error(error)
     })  },[]);
 
-    const  changeRole  = Id => e => {
-      console.log(Id)
-       var newarray = users.find(o => o.StaffId === Id);
-       var role = newarray.Role;
-       const data = {
-         staffId : Id,
-         Role : role
-       }
-       console.log(data)
-      Axios.post(`https://fbn.vasudamall.com/Account/AddUserRole`,data, {
-    headers: {
-      'Authorization': `token ${datas.Token}`
-    }
-  })
-  .then((res) => {
-    alert("successful")
-    console.log(res.data)
-  })
-  .catch((error) => {
-    alert("failed")
-    console.error(error)
-  })
-    }
-
-    const  deleteUser  = Id => e => {
-      console.log(Id)
-       var newarray = users.find(o => o.StaffId === Id);
-       var role = newarray.Role;
-       const data = {
-         staffId : Id,
-         Role : role
-       }
-       console.log(data)
-      Axios.post(`https://fbn.vasudamall.com/Account/RemoveUser`,data, {
-    headers: {
-      'Authorization': `token ${datas.Token}`
-    }
-  })
-  .then((res) => {
-    alert("successful")
-    const index = users.indexOf(users.find(newarray))
-    if(index > -1){
-      users.splice(index,1);
-      setUsers(users);
-    }
-    console.log(res.data)
-  })
-  .catch((error) => {
-    console.error(error)
-  })
-    }
-    const renderUsers = (dispute,index) => {
+    const renderTeams = (dispute,index) => {
       return(
         <tr key={index}>
-          <td>{dispute.FirstName}</td>
-          <td>{dispute.LastName}</td>
-          <td>{dispute.Role}</td>
-          <td>{dispute.Email}</td>
-          <td>{dispute.StaffId}</td>
-          <td><Button onClick={changeRole(dispute.StaffId)} variant="primary"><small>Change Role</small></Button></td>
-          <td><Button onClick={deleteUser(dispute.StaffId)} variant="light"><img src={Bin} /></Button></td>
+          <td>{dispute.ProcessName}</td>
+          <td>{dispute.Platform}</td>
+          <td>{dispute.ResolutionPlatform}</td>
+          <td>{dispute.Card}</td>
+          <td>{dispute.Category}</td>         
+          <td><a href="/erh"><img src={Bin} /></a></td>
         </tr>
       )
    }
@@ -135,9 +83,9 @@ function Manageuser() {
                   <option>5</option>
                 </Form.Control>
               </Form.Group>
-              <Button variant="primary" type="submit">
+              {/* <Button variant="primary" type="submit">
                 Add User
-  </Button>
+  </Button> */}
             </div>
             <div className="float-right">
               <Form>
@@ -155,9 +103,9 @@ function Manageuser() {
         <Card >
           <Card.Body>
 
-            {/* <div className="icon-dot float-right">
+            <div className="icon-dot float-right">
               <Button onClick={() => setLgShow(true)} variant="light"></Button>
-            </div> */}
+            </div>
             <div className="float-right">
               <h5><FormControl type="text" placeholder="Search" className="mr-sm-2" /></h5>
             </div>
@@ -165,15 +113,15 @@ function Manageuser() {
             <Table striped bordered hover size="sm">
               <thead>
                 <tr>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Role</th>
-                  <th>Email </th>
-                  <th>Staff Id </th>
+                  <th>Name</th>
+                  <th>Platform</th>
+                  <th>Resolution Platform</th>
+                  <th>Card</th>
+                  <th>Category</th>
                 </tr>
               </thead>
               <tbody>
-              {users.map(renderUsers)}                  
+              {Teams.map(renderTeams)}                  
 
               </tbody>
             </Table>
@@ -184,4 +132,4 @@ function Manageuser() {
   );
 }
 
-export default Manageuser;
+export default Process;

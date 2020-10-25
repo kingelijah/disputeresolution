@@ -25,8 +25,13 @@
   position: absolute;
   right: 100px;
 }
+.dropdown-classic{
+  display: block;
+  position: absolute;
+  right: 80px;
+}
 .unresolved{
-  color: yellow;
+  color: #E0AD0F;
 }
 .disputes{
   opacity: 50%;
@@ -43,6 +48,46 @@
   bottom: 160px */
   
 }
+.icon-table {
+  height: 10px;
+  width: 100px;
+  border-radius: 50%;
+  display: inline;
+  position: absolute;
+  background: #022E64;
+  /* left: 60px;
+  bottom: 160px */
+  
+}
+.icon-table1 {
+  height: 10px;
+  width: 100px;
+  border-radius: 50%;
+  /* display: block;
+  position: absolute; */
+  background: #E0AD0F;
+  /* left: 60px;
+  bottom: 160px */
+  
+}
+.icon-table2 {
+  height: 10px;
+  width: 100px;
+  border-radius: 50%;
+  /* display: block;
+  position: absolute; */
+  background: #E0AD0F;
+  /* left: 60px;
+  bottom: 160px */
+  
+}
 .modal-title{
-  color:yellow;
+  color:#E0AD0F;
+}
+.user-card{
+  background-color: #E0AD0F;
+  color:white
+}
+.user-card1{
+  background-color:#022E64;
 }
